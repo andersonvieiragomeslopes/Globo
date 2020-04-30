@@ -32,7 +32,7 @@
                        />
                             </SwipeView.RightItems>
                             <Frame CornerRadius="20">
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" HeightRequest="100">
                             <Image x:Name="Image" WidthRequest="140" HeightRequest="100" Source="{Binding Thumbnail}"/>
                             <StackLayout Orientation="Vertical" Padding="8">
                                 <Label FontSize="16" Text="{Binding Title}" HorizontalTextAlignment="Start" />

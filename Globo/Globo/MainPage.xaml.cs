@@ -21,11 +21,11 @@ namespace Globo
         public MainPage()
         {
             InitializeComponent();
-            LoadData();
+            _ = LoadData();
         }
 
 
-        protected void LoadData()
+        public async Task LoadData()
         {
             WebClient webClient = new WebClient();
             webClient.DownloadStringCompleted += WebClient_DownloadStringCompleted;
