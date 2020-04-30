@@ -1,4 +1,5 @@
 ﻿using Globo.Model;
+using Plugin.SharedTransitions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace Globo
             InitializeComponent();
             item = item2;
             Image.Source = item.Thumbnail;
+            SharedTransitionNavigationPage.SetTransitionDuration(this, 500);
+
         }
         public Item item;
     }

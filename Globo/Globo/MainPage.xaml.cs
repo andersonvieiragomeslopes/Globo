@@ -1,5 +1,6 @@
 ﻿using Globo.Model;
 using Newtonsoft.Json;
+using Plugin.SharedTransitions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,9 @@ namespace Globo
         {
             InitializeComponent();
             _ = LoadData();
+
+            SharedTransitionNavigationPage.SetBackgroundAnimation(this, BackgroundAnimation.Fade);
+            SharedTransitionNavigationPage.SetTransitionDuration(this, 500);
         }
 
 
@@ -42,6 +46,8 @@ namespace Globo
         }
         private async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            SharedTransitionNavigationPage.SetTransitionSelectedGroup(this, "Banner");
+
             var item = e.CurrentSelection[0];
            Item obj2 = JsonConvert.DeserializeObject<Item>(JsonConvert.SerializeObject(item));
 

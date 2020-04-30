@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" Visual="Material"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
              x:Class="Globo.MainPage">
     <ContentPage.ToolbarItems>
     </ContentPage.ToolbarItems>
@@ -32,7 +33,9 @@
                             </SwipeView.RightItems>
                             <Frame CornerRadius="20">
                             <StackLayout Orientation="Horizontal" HeightRequest="100">
-                            <Image x:Name="Image" WidthRequest="140" HeightRequest="100" Source="{Binding Thumbnail}"/>
+                                    <Image                                     sharedTransitions:Transition.Group="Banner"
+                                    sharedTransitions:Transition.Name="Title" 
+                                                                               x:Name="Image" WidthRequest="140" HeightRequest="100" Source="{Binding Thumbnail}"/>
                             <StackLayout Orientation="Vertical" Padding="8" >
                                 <Label FontSize="16" Text="{Binding Title}" MaxLines="3" HorizontalTextAlignment="Start" />
                                     <Label TextColor="Gray" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />

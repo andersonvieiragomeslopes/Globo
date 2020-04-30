@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.SharedTransitions;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +13,7 @@ namespace Globo
             Device.SetFlags(new[] {
                 "SwipeView_Experimental"
             });
-            MainPage = new NavigationPage( new MainPage());
+            MainPage = new SharedTransitionNavigationPage( new MainPage());
         }
 
         protected override void OnStart()
