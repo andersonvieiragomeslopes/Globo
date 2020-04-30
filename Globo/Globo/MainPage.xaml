@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" Visual="Material"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
-             x:Class="Globo.MainPage">
+             x:Class="Globo.MainPage" NavigationPage.HasNavigationBar="False"
+>
     <ContentPage.ToolbarItems>
     </ContentPage.ToolbarItems>
 
