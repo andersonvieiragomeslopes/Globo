@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" Visual="Material"
+             x:Class="Globo.MainPage">
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView x:Name="NewsListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+                            
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Ver depois"
+                       IconImageSource="favorite.png"
+                       BackgroundColor="LightGreen"
+                        />
+                                  
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <SwipeView.RightItems>
+
+                                <SwipeItem Text="Favorito"
+                       IconImageSource="watchlater.png"
+                       BackgroundColor="LightPink"
+                       />
+                            </SwipeView.RightItems>
+                            <Frame CornerRadius="20">
+                            <StackLayout Orientation="Horizontal">
+                            <Image x:Name="Image" WidthRequest="140" HeightRequest="100" Source="{Binding Thumbnail}"/>
+                            <StackLayout Orientation="Vertical" Padding="8">
+                                <Label FontSize="16" Text="{Binding Title}" HorizontalTextAlignment="Start" />
+                                    <Label TextColor="Gray" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
+                            </StackLayout>
+                        </StackLayout>
+                                </Frame>
+                        </SwipeView>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
