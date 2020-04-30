@@ -40,9 +40,12 @@ namespace Globo
             collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
 
         }
-        private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var item = e.CurrentSelection[0];
+           Item obj2 = JsonConvert.DeserializeObject<Item>(JsonConvert.SerializeObject(item));
 
+            await Navigation.PushAsync(new DetailNotice(obj2));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Globo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,12 @@ namespace Globo
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailNotice : ContentPage
     {
-        public DetailNotice()
+        public DetailNotice(Item item2)
         {
             InitializeComponent();
+            item = item2;
+            Image.Source = item.Thumbnail;
         }
+        public Item item;
     }
 }
