@@ -10,7 +10,7 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <CollectionView x:Name="NewsListView">
+            <CollectionView x:Name="collectionView" SelectionMode="Single" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
@@ -18,8 +18,8 @@
                             <SwipeView.LeftItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Ver depois"
-                       IconImageSource="favorite.png"
-                       BackgroundColor="LightGreen"
+                       IconImageSource="watchlater.png"
+                       BackgroundColor="White"
                         />
                                   
                                 </SwipeItems>
@@ -27,15 +27,14 @@
                             <SwipeView.RightItems>
 
                                 <SwipeItem Text="Favorito"
-                       IconImageSource="watchlater.png"
-                       BackgroundColor="LightPink"
+                       IconImageSource="favorite.png"
                        />
                             </SwipeView.RightItems>
                             <Frame CornerRadius="20">
                             <StackLayout Orientation="Horizontal" HeightRequest="100">
                             <Image x:Name="Image" WidthRequest="140" HeightRequest="100" Source="{Binding Thumbnail}"/>
-                            <StackLayout Orientation="Vertical" Padding="8">
-                                <Label FontSize="16" Text="{Binding Title}" HorizontalTextAlignment="Start" />
+                            <StackLayout Orientation="Vertical" Padding="8" >
+                                <Label FontSize="16" Text="{Binding Title}" MaxLines="3" HorizontalTextAlignment="Start" />
                                     <Label TextColor="Gray" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
                             </StackLayout>
                         </StackLayout>

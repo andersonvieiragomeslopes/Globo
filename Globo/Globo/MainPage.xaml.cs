@@ -35,7 +35,14 @@ namespace Globo
         public void WebClient_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
         {
             Notice data = JsonConvert.DeserializeObject<Notice>(e.Result);
-            NewsListView.ItemsSource = data.Items;
+            collectionView.ItemsSource = data.Items;
+            collectionView.SelectedItem = data.Items;
+            collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
+
+        }
+        private void OnCollectionViewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
