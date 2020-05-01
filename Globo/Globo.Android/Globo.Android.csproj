@@ -91,7 +91,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\globogif.gif" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Globo\Globo.csproj">
       <Project>{DE446246-1E3C-47E5-AE66-4CC8F3C1E48D}</Project>

@@ -23,7 +23,7 @@ namespace Globo
         {
             InitializeComponent();
             _ = LoadData();
-
+            collectionView.IsVisible = false;
             SharedTransitionNavigationPage.SetBackgroundAnimation(this, BackgroundAnimation.Fade);
             SharedTransitionNavigationPage.SetTransitionDuration(this, 500);
         }
@@ -40,6 +40,8 @@ namespace Globo
         {
             Notice data = JsonConvert.DeserializeObject<Notice>(e.Result);
             collectionView.ItemsSource = data.Items;
+            abso.IsVisible = false;
+            collectionView.IsVisible = true;
             collectionView.SelectedItem = data.Items;
             collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
 

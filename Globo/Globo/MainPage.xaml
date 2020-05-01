@@ -5,14 +5,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" Visual="Material"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
-             x:Class="Globo.MainPage" NavigationPage.HasNavigationBar="False"
->
+             x:Class="Globo.MainPage">
     <ContentPage.ToolbarItems>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout>
-            <CollectionView x:Name="collectionView" SelectionMode="Single" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+            <AbsoluteLayout x:Name="abso" IsVisible="True" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image IsAnimationPlaying="True" BackgroundColor="#f6e7b6" Source="globogif.gif" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"></Image>
+                
+                
+                
+            </AbsoluteLayout>
+            <CollectionView IsVisible="False" x:Name="collectionView" SelectionMode="Single" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <SwipeView>
@@ -29,7 +34,7 @@
                             <SwipeView.RightItems>
 
                                 <SwipeItem Text="Favorito"
-                       IconImageSource="favorite.png"
+                       IconImageSource="favorite.png" BackgroundColor="Yellow"
                        />
                             </SwipeView.RightItems>
                             <Frame CornerRadius="20">
