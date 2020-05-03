@@ -1,5 +1,6 @@
 ﻿using BottomTabBar;
 using Globo.Model;
+using Globo.Themes;
 using Newtonsoft.Json;
 using Plugin.SharedTransitions;
 using System;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,11 +20,58 @@ namespace Globo
     {
         private const string url = "https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fg1.globo.com%2Fdynamo%2Frss2.xml";
 
+        #region Properties
+
+        bool _isLightTheme;
+        public bool IsLightTheme {
+            get { return _isLightTheme; }
+            set {
+                _isLightTheme = value;
+                OnPropertyChanged();
+                if (IsLightTheme)
+                {
+                    IsDarkTheme = false;
+                    IsSystemPreferredTheme = false;
+                }
+            }
+        }
+
+        bool _isDarkTheme;
+        public bool IsDarkTheme {
+            get { return _isDarkTheme; }
+            set {
+                _isDarkTheme = value;
+                OnPropertyChanged();
+                if (IsDarkTheme)
+                {
+                    IsLightTheme = false;
+                    IsSystemPreferredTheme = false;
+                }
+            }
+        }
+
+        bool _isSystemPreferredTheme;
+        public bool IsSystemPreferredTheme {
+            get { return _isSystemPreferredTheme; }
+            set {
+                _isSystemPreferredTheme = value;
+                OnPropertyChanged();
+                if (IsSystemPreferredTheme)
+                {
+                    IsLightTheme = false;
+                    IsDarkTheme = false;
+                }
+            }
+        }
+
+
+        #endregion
+
         public TabbedPage()
         {
             InitializeComponent();
             this.BindingContext = this;
-
+            // GetThemeSetting();
             List<TabItem> tabs = new List<TabItem>();
             tabs.Add(new TabItem() { Id = 1, Icon = "ic_home.png", SelectedIcon = "ic_logo.png", Name = "Inicio", });
             tabs.Add(new TabItem() { Id = 2, Icon = "ic_list.png", SelectedIcon = "ic_logo.png", Name = "Lista", });
@@ -137,6 +185,32 @@ namespace Globo
                 new PropertyType { TypeName = "Tecnologia" },
                 new PropertyType { TypeName = "Filmes" }
             };
+        }
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var args = (TappedEventArgs)e;
+            var theme = args.Parameter.ToString();
+            var appTheme = Enums.ConvertToEnum<Settings.Theme>(theme);
+
+            switch (appTheme)
+            {
+                case Settings.Theme.LightTheme:
+                    IsLightTheme = true;
+                    ThemeHelper.ChangeToLightTheme();
+                    break;
+                case Settings.Theme.DarkTheme:
+                    IsDarkTheme = true;
+                    ThemeHelper.ChangeToDarkTheme();
+                    break;
+                case Settings.Theme.SystemPreferred:
+                    IsSystemPreferredTheme = true;
+                    ThemeHelper.ChangeToSystemPreferredTheme();
+                    break;
+                default:
+                    IsSystemPreferredTheme = true;
+                    ThemeHelper.ChangeToSystemPreferredTheme();
+                    break;
+            }
         }
     }
 

@@ -6,14 +6,14 @@
              mc:Ignorable="d" 
              xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" xmlns:cachedImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             x:Class="Globo.TabbedPage" BackgroundColor="White" >
+             x:Class="Globo.TabbedPage" BackgroundColor="{DynamicResource BackgroundColor}" >
     <NavigationPage.TitleView >
         <StackLayout BackgroundColor="Transparent" VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand"  >
             <Grid>
-                <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Source="https://upload.wikimedia.org/wikipedia/pt/2/22/Logotipo_da_Rede_Globo.png" 
-                   HeightRequest="55" Margin="0,-14,0,0"></Image>
-                <Label  Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Text="Globo.com"
-                   HeightRequest="55" TextColor="Blue" Margin="0,14,0,0"></Label>
+                <!--<Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Source="https://upload.wikimedia.org/wikipedia/pt/2/22/Logotipo_da_Rede_Globo.png" 
+                   HeightRequest="55" Margin="0,-14,0,0"></Image>-->
+                <Label  Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"  Text="globo.com"
+                   HeightRequest="55" TextColor="{DynamicResource TextColor}" FontSize="20" Margin="0,14,0,0"></Label>
             </Grid>
         </StackLayout>
     </NavigationPage.TitleView>
@@ -46,7 +46,7 @@
                         <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding PropertyTypeList}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <pv:PancakeView CornerRadius="15" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
+                                    <pv:PancakeView CornerRadius="15" Margin="5,10,0,10" HasShadow="True" BackgroundColor="{DynamicResource BackgroundColor}">
                                         <pv:PancakeView.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="SelectType"/>
                                         </pv:PancakeView.GestureRecognizers>
@@ -73,7 +73,7 @@
                                                 </VisualState>
                                             </VisualStateGroup>
                                         </VisualStateManager.VisualStateGroups>
-                                        <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding TypeName}" TextColor="#707070" FontSize="15"/>
+                                        <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding TypeName}" TextColor="{DynamicResource TextColor}" FontSize="15"/>
                                     </pv:PancakeView>
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
@@ -88,7 +88,7 @@
                                     <SwipeItems>
                                         <SwipeItem Text="Ver depois"
                        IconImageSource="watchlater.png"
-                       BackgroundColor="White" />
+                       BackgroundColor="{DynamicResource BackgroundColor}" />
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
@@ -111,8 +111,8 @@
                                               HeightRequest="100" 
                                               Source="{Binding Thumbnail}"/>
                                         <StackLayout Orientation="Vertical" Padding="8" >
-                                            <Label FontSize="16" Text="{Binding Title}" MaxLines="3" HorizontalTextAlignment="Start" />
-                                            <Label TextColor="Gray" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
+                                            <Label TextColor="{DynamicResource TextColor}" FontSize="16" Text="{Binding Title}" MaxLines="3" HorizontalTextAlignment="Start" />
+                                            <Label TextColor="{DynamicResource TextColor}" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
@@ -125,23 +125,101 @@
             </StackLayout>
 
             <StackLayout IsVisible="False" x:Name="GloboList">
-                <Label Text="List"></Label>
+                <Label TextColor="{DynamicResource TextColor}" Text="List"></Label>
             </StackLayout>
             <StackLayout IsVisible="False" x:Name="GloboSearch">
-                <Label Text="Search"></Label>
+                <Label TextColor="{DynamicResource TextColor}" Text="Search"></Label>
 
             </StackLayout>
-            <StackLayout IsVisible="False" x:Name="GloboProfile">
-                <Label Text="Profile"></Label>
+            <StackLayout IsVisible="False" x:Name="GloboProfile" Orientation="Vertical">
+                <Label TextColor="{DynamicResource TextColor}" Text="Profile"></Label>
+                <Grid
+                        Padding="10"
+                        BackgroundColor="{DynamicResource BackgroundColor}"
+                        ColumnSpacing="15">
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="DarkTheme"/>
+                    </Grid.GestureRecognizers>
 
-            </StackLayout>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="25"
+                            Text="Claro"
+                            TextColor="{DynamicResource TextColor}"
+                            VerticalOptions="Center" />
+
+                    <Label
+                            Grid.Column="1"
+                            FontSize="16"
+                            Text="Dark"
+                            TextColor="{DynamicResource TextColor}"
+                            VerticalOptions="Center" />
+
+                    <Label
+                            Grid.Column="2"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            TextColor="{DynamicResource TextColor}"
+                            IsVisible="{Binding IsDarkTheme}"
+                            Text="Escuro"
+                            VerticalOptions="Center" />
+
+                </Grid>
+
+                    <Grid
+                        Padding="10"
+                        BackgroundColor="{DynamicResource BackgroundColor}"
+                        ColumnSpacing="15">
+                        <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="LightTheme" />
+                        </Grid.GestureRecognizers>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="25"
+                            Text="Claro"
+                            TextColor="{DynamicResource TextColor}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="1"
+                            FontSize="16"
+                            Text="Light"
+                            TextColor="{DynamicResource TextColor}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Column="2"
+                            FontAttributes="Bold"
+                            FontSize="18"
+                            TextColor="{DynamicResource TextColor}"
+                            IsVisible="{Binding IsLightTheme}"
+                            Text="Claro"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+                </StackLayout>
             <tab:BottomTabBar AbsoluteLayout.LayoutBounds="0, 0.99, 1, 1"  AbsoluteLayout.LayoutFlags="All"
                 x:Name="BottomTabBarContainer" Tapped="BottomTabBarContainer_Tapped"
-                BarBackgroundColor="White"
-                BarLineColor="White"
-                BarSelectedColor="White" 
-                BarTextColor="Black"
-                BackgroundColor="White"
+                BarBackgroundColor="{DynamicResource BackgroundColor}"
+                BarLineColor="{DynamicResource BackgroundColor}"
+                BarSelectedColor="{DynamicResource BackgroundColor}" 
+                BarTextColor="{DynamicResource TextColor}"
+                BackgroundColor="{DynamicResource BackgroundColor}"
                 TabType="Fixed"
                 VerticalOptions="EndAndExpand" />
         </AbsoluteLayout>

@@ -1,4 +1,5 @@
-﻿using Plugin.SharedTransitions;
+﻿using Globo.Themes;
+using Plugin.SharedTransitions;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,6 +19,8 @@ namespace Globo
 
         protected override void OnStart()
         {
+            ThemeHelper.GetAppTheme();
+
         }
 
         protected override void OnSleep()
