@@ -47,7 +47,7 @@ namespace Globo
         {
             Notice data = JsonConvert.DeserializeObject<Notice>(e.Result);
             collectionView.ItemsSource = data.Items;
-            abso.IsVisible = false;
+            //abso.IsVisible = false;
             stack.IsVisible = true;
             collectionView.SelectedItem = data.Items;
             collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
