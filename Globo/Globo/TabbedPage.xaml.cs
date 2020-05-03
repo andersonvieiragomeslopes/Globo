@@ -22,6 +22,8 @@ namespace Globo
         public TabbedPage()
         {
             InitializeComponent();
+            this.BindingContext = this;
+
             List<TabItem> tabs = new List<TabItem>();
             tabs.Add(new TabItem() { Id = 1, Icon = "ic_home.png", SelectedIcon = "ic_logo.png", Name = "Inicio", });
             tabs.Add(new TabItem() { Id = 2, Icon = "ic_list.png", SelectedIcon = "ic_logo.png", Name = "Lista", });
@@ -99,5 +101,47 @@ namespace Globo
                 GloboSearch.IsVisible = false;
             }
         }
+
+        private void SelectType(object sender, EventArgs e)
+        {
+            var view = sender as View;
+            var parent = view.Parent as StackLayout;
+
+            foreach (var child in parent.Children)
+            {
+                VisualStateManager.GoToState(child, "Normal");
+                ChangeTextColor(child, "#121212");
+            }
+
+            VisualStateManager.GoToState(view, "Selected");
+            ChangeTextColor(view, "#FFFFFF");
+        }
+        private void ChangeTextColor(View child, string hexColor)
+        {
+            var txtCtrl = child.FindByName<Label>("PropertyTypeName");
+
+            if (txtCtrl != null)
+                txtCtrl.TextColor = Color.FromHex(hexColor);
+        }
+
+        public List<PropertyType> PropertyTypeList => GetPropertyTypes();
+
+        // inspired by devcrux hotel
+        //mencionar nos créditos
+        private List<PropertyType> GetPropertyTypes()
+        {
+            return new List<PropertyType>
+            {
+                new PropertyType { TypeName = "Todos" },
+                new PropertyType { TypeName = "Notícias" },
+                new PropertyType { TypeName = "Tecnologia" },
+                new PropertyType { TypeName = "Filmes" }
+            };
+        }
+    }
+
+    public class PropertyType
+    {
+        public string TypeName { get; set; }
     }
 }

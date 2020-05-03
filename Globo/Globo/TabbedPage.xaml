@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:tab="clr-namespace:BottomTabBar;assembly=BottomTabBar"
-             mc:Ignorable="d" xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             mc:Ignorable="d" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
              x:Class="Globo.TabbedPage" BackgroundColor="White" >
     <NavigationPage.TitleView >
         <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand"  >
@@ -18,41 +20,90 @@
     <ContentPage.Content>
         <AbsoluteLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <!--<AbsoluteLayout   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">-->
-                <!--<Image x:Name="abso" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"  IsVisible="True" IsAnimationPlaying="True" BackgroundColor="#f6e7b6" Source="globogif.gif" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>-->
+            <!--<Image x:Name="abso" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"  IsVisible="True" IsAnimationPlaying="True" BackgroundColor="#f6e7b6" Source="globogif.gif" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>-->
 
 
 
             <!--</AbsoluteLayout>-->
             <StackLayout IsVisible="True" x:Name="stack" >
-                <Frame CornerRadius="40" Margin="20,10,20,5" HeightRequest="50" WidthRequest="120" BackgroundColor="Gray">
-                    <SearchBar HeightRequest="50" WidthRequest="120" Placeholder="Buscar" CancelButtonColor="Black" TextColor="Black"></SearchBar>
+                <!--<Frame Grid.Row="0" CornerRadius="40" Margin="20,10,20,5" HeightRequest="50" BackgroundColor="Gray">
+                    <SearchBar HeightRequest="50"  Placeholder="Buscar" CancelButtonColor="Black" TextColor="Black"></SearchBar>
+                </Frame>-->
+                <Frame HasShadow="True" BackgroundColor="Gray" Margin="0,20" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Image HeightRequest="20" WidthRequest="20" Margin="20,0" Source="ic_search.png"/>
+                        <Entry Grid.Column="1" Placeholder="buscar" TextColor="Black" FontSize="15" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+                        <Image Grid.Column="2" HeightRequest="20" WidthRequest="20" Margin="20,0" Source="filter.png"/>
+                    </Grid>
                 </Frame>
-                
+                <StackLayout>
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding PropertyTypeList}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <pv:PancakeView CornerRadius="15" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
+                                        <pv:PancakeView.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="SelectType"/>
+                                        </pv:PancakeView.GestureRecognizers>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundGradientStops" Value="{x:Null}"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                                <VisualState x:Name="Selected">
+                                                    <VisualState.Setters>
+                                                        <Setter Property="BackgroundGradientStops">
+                                                            <Setter.Value>
+                                                                <pv:GradientStopCollection>
+                                                                    <pv:GradientStop Color="#121212" Offset="0" />
+                                                                    <pv:GradientStop Color="#222222" Offset="0.5" />
+                                                                    <pv:GradientStop Color="#323232" Offset="1" />
+                                                                </pv:GradientStopCollection>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Setter Property="BackgroundGradientAngle" Value="270"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                        <Label x:Name="PropertyTypeName" Padding="20,5" Text="{Binding TypeName}" TextColor="#707070" FontSize="15"/>
+                                    </pv:PancakeView>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
                 <CollectionView  x:Name="collectionView"  SelectionMode="Single" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
-
                                 <SwipeView.LeftItems>
                                     <SwipeItems>
                                         <SwipeItem Text="Ver depois"
                        IconImageSource="watchlater.png"
-                       BackgroundColor="White"
-                        />
-
+                       BackgroundColor="White" />
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <SwipeView.RightItems>
-
                                     <SwipeItem Text="Favorito"
-                       IconImageSource="favorite.png" BackgroundColor="Yellow"
-                       />
+                       IconImageSource="favorite.png" BackgroundColor="Yellow"/>
                                 </SwipeView.RightItems>
                                 <Frame CornerRadius="20">
                                     <StackLayout Orientation="Horizontal" HeightRequest="100">
-                                        <Image                                     sharedTransitions:Transition.Group="Banner"
-                                    sharedTransitions:Transition.Name="Title" 
-                                                                               x:Name="Image" WidthRequest="140" HeightRequest="100" Source="{Binding Thumbnail}"/>
+                                        <Image 
+                                              sharedTransitions:Transition.Group="Banner"
+                                              sharedTransitions:Transition.Name="Title" 
+                                              x:Name="Image" 
+                                              WidthRequest="140" 
+                                              HeightRequest="100" 
+                                              Source="{Binding Thumbnail}"/>
                                         <StackLayout Orientation="Vertical" Padding="8" >
                                             <Label FontSize="16" Text="{Binding Title}" MaxLines="3" HorizontalTextAlignment="Start" />
                                             <Label TextColor="Gray" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
@@ -64,7 +115,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
 
             </StackLayout>
 
