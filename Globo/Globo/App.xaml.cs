@@ -13,7 +13,7 @@ namespace Globo
             Device.SetFlags(new[] {
                 "SwipeView_Experimental"
             });
-            MainPage = new SharedTransitionNavigationPage( new MainPage());
+            MainPage = new SharedTransitionNavigationPage( new TabbedPage());
         }
 
         protected override void OnStart()

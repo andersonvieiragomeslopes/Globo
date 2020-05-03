@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:tab="clr-namespace:BottomTabBar;assembly=BottomTabBar"
+             mc:Ignorable="d" xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             x:Class="Globo.TabbedPage" BackgroundColor="Black">
+    <ContentPage.Content>
+        <AbsoluteLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <!--<AbsoluteLayout   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">-->
+                <Image x:Name="abso" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"  IsVisible="True" IsAnimationPlaying="True" BackgroundColor="#f6e7b6" Source="globogif.gif" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></Image>
+
+
+
+            <!--</AbsoluteLayout>-->
+            <CollectionView IsVisible="False" x:Name="collectionView" SelectionMode="Single" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <SwipeView>
+
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Ver depois"
+                       IconImageSource="watchlater.png"
+                       BackgroundColor="White"
+                        />
+
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <SwipeView.RightItems>
+
+                                <SwipeItem Text="Favorito"
+                       IconImageSource="favorite.png" BackgroundColor="Yellow"
+                       />
+                            </SwipeView.RightItems>
+                            <Frame CornerRadius="20">
+                                <StackLayout Orientation="Horizontal" HeightRequest="100">
+                                    <Image                                     sharedTransitions:Transition.Group="Banner"
+                                    sharedTransitions:Transition.Name="Title" 
+                                                                               x:Name="Image" WidthRequest="140" HeightRequest="100" Source="{Binding Thumbnail}"/>
+                                    <StackLayout Orientation="Vertical" Padding="8" >
+                                        <Label FontSize="16" Text="{Binding Title}" MaxLines="3" HorizontalTextAlignment="Start" />
+                                        <Label TextColor="Gray" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </SwipeView>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <tab:BottomTabBar AbsoluteLayout.LayoutBounds="0, 0.99, 1, 1"  AbsoluteLayout.LayoutFlags="All"
+                x:Name="BottomTabBarContainer"
+                BarBackgroundColor="White"
+                BarLineColor="White"
+                BarSelectedColor="White" 
+                BarTextColor="Black"
+                BackgroundColor="White"
+                TabType="Fixed"
+                VerticalOptions="EndAndExpand" />
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>
