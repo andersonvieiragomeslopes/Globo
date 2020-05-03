@@ -25,7 +25,7 @@
 
 
             <!--</AbsoluteLayout>-->
-            <StackLayout IsVisible="True" x:Name="stack" >
+            <StackLayout IsVisible="False" x:Name="stack" >
                 <!--<Frame Grid.Row="0" CornerRadius="40" Margin="20,10,20,5" HeightRequest="50" BackgroundColor="Gray">
                     <SearchBar HeightRequest="50"  Placeholder="Buscar" CancelButtonColor="Black" TextColor="Black"></SearchBar>
                 </Frame>-->
