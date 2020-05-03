@@ -137,11 +137,11 @@
             </StackLayout>
             <tab:BottomTabBar AbsoluteLayout.LayoutBounds="0, 0.99, 1, 1"  AbsoluteLayout.LayoutFlags="All"
                 x:Name="BottomTabBarContainer" Tapped="BottomTabBarContainer_Tapped"
-                BarBackgroundColor="Transparent"
+                BarBackgroundColor="White"
                 BarLineColor="White"
                 BarSelectedColor="White" 
                 BarTextColor="Black"
-                BackgroundColor="Transparent"
+                BackgroundColor="White"
                 TabType="Fixed"
                 VerticalOptions="EndAndExpand" />
         </AbsoluteLayout>
