@@ -8,12 +8,12 @@
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" xmlns:cachedImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Globo.TabbedPage" BackgroundColor="White" >
     <NavigationPage.TitleView >
-        <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand"  >
+        <StackLayout BackgroundColor="Transparent" VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand"  >
             <Grid>
                 <Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Source="https://upload.wikimedia.org/wikipedia/pt/2/22/Logotipo_da_Rede_Globo.png" 
                    HeightRequest="55" Margin="0,-14,0,0"></Image>
                 <Label  Grid.Row="0" Grid.Column="2" HorizontalOptions="Center" Text="Globo.com"
-                   HeightRequest="55" TextColor="White" Margin="0,14,0,0"></Label>
+                   HeightRequest="55" TextColor="Blue" Margin="0,14,0,0"></Label>
             </Grid>
         </StackLayout>
     </NavigationPage.TitleView>
@@ -25,11 +25,11 @@
 
 
             <!--</AbsoluteLayout>-->
-            <StackLayout IsVisible="False" x:Name="stack" >
+            <StackLayout IsVisible="True" x:Name="stack" >
                 <!--<Frame Grid.Row="0" CornerRadius="40" Margin="20,10,20,5" HeightRequest="50" BackgroundColor="Gray">
                     <SearchBar HeightRequest="50"  Placeholder="Buscar" CancelButtonColor="Black" TextColor="Black"></SearchBar>
                 </Frame>-->
-                <Frame HasShadow="True" BackgroundColor="Gray" Margin="0,20" Padding="0" HeightRequest="40" HorizontalOptions="FillAndExpand">
+                <Frame HasShadow="True" CornerRadius="40" BorderColor="Gray" BackgroundColor="Transparent" Margin="10,20,60,0" Padding="0" HeightRequest="40">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -101,6 +101,12 @@
                                               sharedTransitions:Transition.Group="Banner"
                                               sharedTransitions:Transition.Name="Title" 
                                               x:Name="Image" 
+                                            FadeAnimationDuration="200"
+                                            FadeAnimationEnabled="True"
+                                            FadeAnimationForCachedImages="True"
+                                            ErrorPlaceholder="ic_placeholder_image.png"
+                                            RetryCount="3"
+                                            LoadingPlaceholder="ic_placeholder_image.png"
                                               WidthRequest="140" 
                                               HeightRequest="100" 
                                               Source="{Binding Thumbnail}"/>
@@ -131,11 +137,11 @@
             </StackLayout>
             <tab:BottomTabBar AbsoluteLayout.LayoutBounds="0, 0.99, 1, 1"  AbsoluteLayout.LayoutFlags="All"
                 x:Name="BottomTabBarContainer" Tapped="BottomTabBarContainer_Tapped"
-                BarBackgroundColor="White"
+                BarBackgroundColor="Transparent"
                 BarLineColor="White"
                 BarSelectedColor="White" 
                 BarTextColor="Black"
-                BackgroundColor="White"
+                BackgroundColor="Transparent"
                 TabType="Fixed"
                 VerticalOptions="EndAndExpand" />
         </AbsoluteLayout>
