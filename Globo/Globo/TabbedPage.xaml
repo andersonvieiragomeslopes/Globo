@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:tab="clr-namespace:BottomTabBar;assembly=BottomTabBar"
              mc:Ignorable="d" 
              xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" xmlns:cachedImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="Globo.TabbedPage" BackgroundColor="White" >
     <NavigationPage.TitleView >
         <StackLayout VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand"  >
@@ -43,7 +43,7 @@
                 </Frame>
                 <StackLayout>
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <StackLayout Orientation="Horizontal" Spacing="10" BindableLayout.ItemsSource="{Binding PropertyTypeList}">
+                        <StackLayout Orientation="Horizontal" Spacing="5" BindableLayout.ItemsSource="{Binding PropertyTypeList}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <pv:PancakeView CornerRadius="15" Margin="5,10,0,10" HasShadow="True" BackgroundColor="White">
@@ -95,9 +95,9 @@
                                     <SwipeItem Text="Favorito"
                        IconImageSource="favorite.png" BackgroundColor="Yellow"/>
                                 </SwipeView.RightItems>
-                                <Frame CornerRadius="20">
-                                    <StackLayout Orientation="Horizontal" HeightRequest="100">
-                                        <Image 
+                                <Frame CornerRadius="20" Padding="0,0,20,0">
+                                    <StackLayout Orientation="Horizontal" Padding="0,0,20,0" HeightRequest="100">
+                                        <cachedImage:CachedImage 
                                               sharedTransitions:Transition.Group="Banner"
                                               sharedTransitions:Transition.Name="Title" 
                                               x:Name="Image" 
