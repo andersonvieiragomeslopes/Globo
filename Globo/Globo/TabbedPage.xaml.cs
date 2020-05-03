@@ -30,7 +30,7 @@ namespace Globo
 
             BottomTabBarContainer.TabItemsSource = tabs;
             _ = LoadData();
-            collectionView.IsVisible = false;
+            stack.IsVisible = false;
             SharedTransitionNavigationPage.SetBackgroundAnimation(this, BackgroundAnimation.Fade);
             SharedTransitionNavigationPage.SetTransitionDuration(this, 500);
         }
@@ -48,7 +48,7 @@ namespace Globo
             Notice data = JsonConvert.DeserializeObject<Notice>(e.Result);
             collectionView.ItemsSource = data.Items;
             abso.IsVisible = false;
-            collectionView.IsVisible = true;
+            stack.IsVisible = true;
             collectionView.SelectedItem = data.Items;
             collectionView.SelectionChanged += OnCollectionViewSelectionChanged;
 
@@ -65,43 +65,39 @@ namespace Globo
 
 
 
-        //private async void BottomTabBarContainer_Tapped(object sender, BottomTabBar.TabItem e)
-        //{
-        //    var mainViewModel = MainViewModel.GetInstance();
 
-        //    if (e.Id == 1)
-        //    {
-        //        //mainViewModel.AllNotices = new AllNoticeViewModel();
-        //        //await Navigation.PushAsync(new AllNoticesView());
-        //    }
-        //    else if (e.Id == 2)
-        //    {
-        //        mainViewModel.AllChannels = new AllChannelsViewModel();
-        //        await Navigation.PushAsync(new AllChannelView());
+        private void BottomTabBarContainer_Tapped(object sender, BottomTabBar.TabItem e)
+        {
 
-        //    }
-        //    else if (e.Id == 3)
-        //    {
-        //        if (AppSettings.IsLive)
-        //        {
-        //            await Navigation.PushAsync(new LiveStreamingView(AppSettings.TokenType));
-        //        }
-        //        else
-        //        {
-        //            App.ShowToast(ToastNotificationType.Warning, "Que pena!", "No momento, não há jogos ao vivo!", 5);
+            if (e.Id == 1)
+            {
+                stack.IsVisible = true;
+                GloboList.IsVisible = false;
+                GloboProfile.IsVisible = false;
+                GloboSearch.IsVisible = false;
+            }
+            else if (e.Id == 2)
+            {
+                stack.IsVisible = false;
+                GloboList.IsVisible = true;
+                GloboProfile.IsVisible = false;
+                GloboSearch.IsVisible = false;
 
-        //        }
-        //    }
-        //    else if (e.Id == 4)
-        //    {
-        //        mainViewModel.Games = new GamesViewModel();
-        //        await Navigation.PushAsync(new GamesView());
-        //    }
-        //    else if (e.Id == 5)
-        //    {
-        //        mainViewModel.TableGames = new TableGameViewModel();
-        //        await Navigation.PushAsync(new TableGamesView());
-        //    }
-        //}
+            }
+            else if (e.Id == 3)
+            {
+                stack.IsVisible = false;
+                GloboList.IsVisible = false;
+                GloboProfile.IsVisible = false;
+                GloboSearch.IsVisible = true;
+            }
+            else if (e.Id == 4)
+            {
+                stack.IsVisible = false;
+                GloboList.IsVisible = false;
+                GloboProfile.IsVisible = true;
+                GloboSearch.IsVisible = false;
+            }
+        }
     }
 }

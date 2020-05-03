@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:tab="clr-namespace:BottomTabBar;assembly=BottomTabBar"
              mc:Ignorable="d" xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
-             x:Class="Globo.TabbedPage" BackgroundColor="Black">
+             x:Class="Globo.TabbedPage" BackgroundColor="White">
     <ContentPage.Content>
         <AbsoluteLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <!--<AbsoluteLayout   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">-->
@@ -13,44 +13,60 @@
 
 
             <!--</AbsoluteLayout>-->
-            <CollectionView IsVisible="False" x:Name="collectionView" SelectionMode="Single" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <SwipeView>
+            <StackLayout IsVisible="False" x:Name="stack">
+                <CollectionView  x:Name="collectionView"  SelectionMode="Single" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView>
 
-                            <SwipeView.LeftItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="Ver depois"
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Ver depois"
                        IconImageSource="watchlater.png"
                        BackgroundColor="White"
                         />
 
-                                </SwipeItems>
-                            </SwipeView.LeftItems>
-                            <SwipeView.RightItems>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+                                <SwipeView.RightItems>
 
-                                <SwipeItem Text="Favorito"
+                                    <SwipeItem Text="Favorito"
                        IconImageSource="favorite.png" BackgroundColor="Yellow"
                        />
-                            </SwipeView.RightItems>
-                            <Frame CornerRadius="20">
-                                <StackLayout Orientation="Horizontal" HeightRequest="100">
-                                    <Image                                     sharedTransitions:Transition.Group="Banner"
+                                </SwipeView.RightItems>
+                                <Frame CornerRadius="20">
+                                    <StackLayout Orientation="Horizontal" HeightRequest="100">
+                                        <Image                                     sharedTransitions:Transition.Group="Banner"
                                     sharedTransitions:Transition.Name="Title" 
                                                                                x:Name="Image" WidthRequest="140" HeightRequest="100" Source="{Binding Thumbnail}"/>
-                                    <StackLayout Orientation="Vertical" Padding="8" >
-                                        <Label FontSize="16" Text="{Binding Title}" MaxLines="3" HorizontalTextAlignment="Start" />
-                                        <Label TextColor="Gray" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
+                                        <StackLayout Orientation="Vertical" Padding="8" >
+                                            <Label FontSize="16" Text="{Binding Title}" MaxLines="3" HorizontalTextAlignment="Start" />
+                                            <Label TextColor="Gray" FontSize="12" HorizontalTextAlignment="End" Text="{Binding PubDate, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
+                                        </StackLayout>
                                     </StackLayout>
-                                </StackLayout>
-                            </Frame>
-                        </SwipeView>
+                                </Frame>
+                            </SwipeView>
 
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+            </StackLayout>
+
+            <StackLayout IsVisible="False" x:Name="GloboList">
+                <Label Text="List"></Label>
+            </StackLayout>
+            <StackLayout IsVisible="False" x:Name="GloboSearch">
+                <Label Text="Search"></Label>
+
+            </StackLayout>
+            <StackLayout IsVisible="False" x:Name="GloboProfile">
+                <Label Text="Profile"></Label>
+
+            </StackLayout>
             <tab:BottomTabBar AbsoluteLayout.LayoutBounds="0, 0.99, 1, 1"  AbsoluteLayout.LayoutFlags="All"
-                x:Name="BottomTabBarContainer"
+                x:Name="BottomTabBarContainer" Tapped="BottomTabBarContainer_Tapped"
                 BarBackgroundColor="White"
                 BarLineColor="White"
                 BarSelectedColor="White" 
