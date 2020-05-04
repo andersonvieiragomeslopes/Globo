@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Lottie.Forms.Droid;
+using Rg.Plugins.Popup.Services;
 
 namespace Globo.Droid
 {
@@ -20,6 +21,7 @@ namespace Globo.Droid
 
             base.OnCreate(savedInstanceState);
             FFImageLoading.Forms.Platform.CachedImageRenderer.InitImageViewHandler();
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -32,6 +34,19 @@ namespace Globo.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        public override void OnBackPressed()
+        {
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                //DependencyService.Get<IAndroidOrientation>().RotateToPortrait();
+
+                PopupNavigation.Instance.PopAsync();
+            }
+            else
+            {
+                //DependencyService.Get<IMessage>().LongAlert(Languages.DoubleBackToExit);
+            }
         }
     }
 }

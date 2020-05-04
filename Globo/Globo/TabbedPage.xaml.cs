@@ -3,6 +3,7 @@ using Globo.Model;
 using Globo.Themes;
 using Newtonsoft.Json;
 using Plugin.SharedTransitions;
+using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -116,7 +117,7 @@ namespace Globo
 
 
 
-        private void BottomTabBarContainer_Tapped(object sender, BottomTabBar.TabItem e)
+        private async void BottomTabBarContainer_Tapped(object sender, BottomTabBar.TabItem e)
         {
 
             if (e.Id == 1)
@@ -132,6 +133,8 @@ namespace Globo
                 GloboList.IsVisible = true;
                 GloboProfile.IsVisible = false;
                 GloboSearch.IsVisible = false;
+                await Navigation.PushPopupAsync(new MyPreferencePopupPage());
+
 
             }
             else if (e.Id == 3)

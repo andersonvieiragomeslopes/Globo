@@ -126,6 +126,9 @@
 
             <StackLayout IsVisible="False" x:Name="GloboList">
                 <Label TextColor="{DynamicResource TextColor}" Text="List"></Label>
+                
+                
+                
             </StackLayout>
             <StackLayout IsVisible="False" x:Name="GloboSearch">
                 <Label TextColor="{DynamicResource TextColor}" Text="Search"></Label>
