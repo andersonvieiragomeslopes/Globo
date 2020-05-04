@@ -7,5 +7,7 @@
              x:Class="Globo.Themes.LightTheme">
     <Color x:Key="BackgroundColor">#ffffff</Color>
     <Color x:Key="TextColor">#000000</Color>
-
+    <Color x:Key="GradientColorStart">#121212</Color>
+    <Color x:Key="GradientColor">#222222</Color>
+    <Color x:Key="GradientColorEnd">#323232</Color>
 </ResourceDictionary>
