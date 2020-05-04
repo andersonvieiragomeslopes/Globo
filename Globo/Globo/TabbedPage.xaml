@@ -13,7 +13,7 @@
                 <!--<Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Source="https://upload.wikimedia.org/wikipedia/pt/2/22/Logotipo_da_Rede_Globo.png" 
                    HeightRequest="55" Margin="0,-14,0,0"></Image>-->
                 <Label  Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"  Text="globo.com"
-                   HeightRequest="55" TextColor="{DynamicResource TextColor}" FontSize="20" Margin="0,14,0,0"></Label>
+                   HeightRequest="55" TextColor="{DynamicResource TextColor2}" FontSize="20" Margin="0,14,0,0"></Label>
                 <!--<Image Grid.Row="0" 
                        Grid.Column="2" 
                        Margin="100,-18,0,0" 
@@ -98,7 +98,7 @@ Source="ic_light.png">
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
-                <CollectionView BackgroundColor="{DynamicResource BackgroundColor}"  x:Name="collectionView"  SelectionMode="Single" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
+                <CollectionView BackgroundColor="{DynamicResource BackgroundColor}"  x:Name="collectionView"  SelectionMode="None" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <SwipeView>
@@ -144,10 +144,10 @@ Source="ic_light.png">
 
             <StackLayout IsVisible="False" x:Name="GloboList">
                 
-                <Label TextColor="{DynamicResource TextColor}" Text="GloboList"></Label>
+                <!--<Label TextColor="{DynamicResource TextColor}" Text="GloboList"></Label>-->
                 <StackLayout HeightRequest="200">
                     <Label
-                    Text="Olha o que a globo preparou para você..." Opacity="0.7"  FontAttributes="Bold"  FontSize="14">
+                    Text="Olha o que a globo preparou para você..." Opacity="0.7" TextColor="{DynamicResource TextColor}" FontAttributes="Bold"  FontSize="14">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="12, 0" />
@@ -196,7 +196,7 @@ Source="ic_light.png">
                 </StackLayout>
                 <StackLayout HeightRequest="200">
                     <Label
-                    Text="Tá em dúvida do que assistir? Olha só.." Opacity="0.7"  FontAttributes="Bold"  FontSize="14">
+                    Text="Tá em dúvida do que assistir? Olha só.." Opacity="0.7" TextColor="{DynamicResource TextColor}" FontAttributes="Bold"  FontSize="14">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="12, 0" />
@@ -245,7 +245,7 @@ Source="ic_light.png">
                 </StackLayout>
                 <StackLayout HeightRequest="200">
                     <Label
-                    Text="Olha o que a globo preparou para você..." Opacity="0.7"  FontAttributes="Bold"  FontSize="14">
+                    Text="Hoje a noite temos novidades para você..." TextColor="{DynamicResource TextColor}" Opacity="0.7"  FontAttributes="Bold"  FontSize="14">
                         <Label.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <On Platform="Android" Value="12, 0" />
@@ -299,17 +299,9 @@ Source="ic_light.png">
 
             </StackLayout>
             
-            <StackLayout IsVisible="False" x:Name="GloboProfile" Orientation="Vertical">
+            <ScrollView IsVisible="False" x:Name="GloboProfile" Orientation="Vertical">
               
-                
-                
-                
-                
-                
-                
-                <ScrollView>
-                    <StackLayout>
-                    <Grid
+                  <Grid
             Padding="0"
             ColumnSpacing="0"
             RowSpacing="0">
@@ -318,8 +310,8 @@ Source="ic_light.png">
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <Image
-                Grid.Row="0"
+                        <Image IsVisible="False"
+                Grid.Row="0" x:Name="XProfile"
                 Aspect="AspectFill"
                 HorizontalOptions="Fill"
                 Source="time60censurado"
@@ -575,10 +567,8 @@ Source="ic_light.png">
                             </Grid>
                         </pv:PancakeView>
                         </Grid>
-                    </StackLayout>
-                </ScrollView>
-
-                </StackLayout>
+            </ScrollView>
+            
             <tab:BottomTabBar AbsoluteLayout.LayoutBounds="0, 0.99, 1, 1"  AbsoluteLayout.LayoutFlags="All"
                 x:Name="BottomTabBarContainer" Tapped="BottomTabBarContainer_Tapped"
                 BarBackgroundColor="{DynamicResource BackgroundColor}"

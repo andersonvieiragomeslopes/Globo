@@ -159,6 +159,10 @@ namespace Globo
                 GloboList.IsVisible = false;
                 GloboProfile.IsVisible = true;
                 GloboSearch.IsVisible = false;
+                XProfile.TranslationY = 600;
+                await Task.Delay(2000);
+                XProfile.IsVisible = true;
+                await XProfile.TranslateTo(0, 0, 500, Easing.SinOut);
             }
         }
 
