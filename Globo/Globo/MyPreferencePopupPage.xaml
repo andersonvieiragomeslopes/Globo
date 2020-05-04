@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 mc:Ignorable="d" CloseWhenBackgroundIsClicked="False"
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView" xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+                 mc:Ignorable="d" CloseWhenBackgroundIsClicked="False" Visual="Material"
              x:Class="Globo.MyPreferencePopupPage">
     <popup:PopupPage.Animation>
         <animations:ScaleAnimation
@@ -19,40 +19,134 @@
             ScaleOut="0.8" />
     </popup:PopupPage.Animation>
     <ContentPage.Content>
-        <pancake:PancakeView
-            Padding="0"
-            BackgroundGradientAngle="90"
+
+
+        <StackLayout Orientation="Horizontal">
+
+            <pancake:PancakeView 
             BackgroundGradientEndColor="White"
+            BackgroundGradientStartColor="White"
+            CornerRadius="25,25,25,25" HeightRequest="400"
+            HasShadow="True" HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center">
+                <StackLayout>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout  Grid.Row="0" HeightRequest="50">
+                        <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                            
+                        <Grid.ColumnDefinitions>
+                             <ColumnDefinition Width="*"></ColumnDefinition>
+                             <ColumnDefinition Width="*"></ColumnDefinition>
+                             <ColumnDefinition Width="*"></ColumnDefinition>
+                         </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" Padding="0,10,0,0" FontSize="10" Text="Escolha temas da sua preferencia!"></Label>
+
+                        <Image
+Grid.Row="0" Grid.Column="3"
+                    VerticalOptions="Start"
+                     Source="ic_close"
+                    BackgroundColor="Transparent"                    
+                    HeightRequest="36"
+                    HorizontalOptions="EndAndExpand"
+                    WidthRequest="45">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="0">
+                            <cards:CoverFlowView 
+                PositionShiftValue="145" HeightRequest="300"
+                IsCyclical="False" 
+                ItemsSource="{Binding Items}">
+
+                                <cards:CoverFlowView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Frame
+                       Margin="80"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Fill"
+                       Padding="0" 
+                       HasShadow="false"
+                       IsClippedToBounds="true"
+                       CornerRadius="10"
+                       BackgroundColor="Red">
+                                            <ffimage:CachedImage Source="{Binding Source}" Aspect="AspectFill"/>
+                                        </Frame>
+                                    </DataTemplate>
+                                </cards:CoverFlowView.ItemTemplate>
+                            </cards:CoverFlowView>
+                        </StackLayout>
+                      
+                    </Grid>
+                </StackLayout>
+
+            </pancake:PancakeView>
+        </StackLayout>
+
+
+        <!--<Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1"
+                    Grid.Column="1" Orientation="Horizontal">
+                <pancake:PancakeView   Grid.Row="0" 
+            BackgroundGradientAngle="90"
+            BackgroundGradientEndColor="Black"
             BackgroundGradientStartColor="White"
             CornerRadius="25,25,25,25"
             HasShadow="True"
             HeightRequest="305"
             VerticalOptions="Center">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
+                    <cards:CoverFlowView
+                PositionShiftValue="145"
+                IsCyclical="False"
+                ItemsSource="{Binding Items}">
 
+                        <cards:CoverFlowView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                       Margin="80"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Fill"
+                       Padding="0" 
+                       HasShadow="false"
+                       IsClippedToBounds="true"
+                       CornerRadius="10"
+                       BackgroundColor="{Binding Color}">
+                                    <ffimage:CachedImage Source="{Binding Source}" Aspect="AspectFill"/>
+                                </Frame>
+                            </DataTemplate>
+                        </cards:CoverFlowView.ItemTemplate>
+                    </cards:CoverFlowView>
 
-
-                <Image
-                    Grid.Row="0"
-                    Grid.Column="2"
+                </pancake:PancakeView>
+                </StackLayout>
+                --><!--<Image Grid.Row="0"
                     Margin="0,15,10,0"
                      Source="ic_close"
                     BackgroundColor="Transparent"
-                    
+                    VerticalOptions="Start"
                     HeightRequest="36"
-                    HorizontalOptions="EndAndExpand"
-                    VerticalOptions="Center"
+
                     WidthRequest="45">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
                     </Image.GestureRecognizers>
-                </Image>
-               
-            </Grid>
-        </pancake:PancakeView>
+                </Image>--><!--
+            </Grid>-->
     </ContentPage.Content>
 </popup:PopupPage>

@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Lottie.Forms.Droid;
 using Rg.Plugins.Popup.Services;
+using PanCardView.Droid;
 
 namespace Globo.Droid
 {
@@ -26,6 +27,8 @@ namespace Globo.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
+            CardsViewRenderer.Preserve();
+
             AnimationViewRenderer.Init();
             LoadApplication(new App());
         }
