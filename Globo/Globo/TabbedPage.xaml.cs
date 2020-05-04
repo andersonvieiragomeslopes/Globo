@@ -75,7 +75,7 @@ namespace Globo
             // GetThemeSetting();
             List<TabItem> tabs = new List<TabItem>();
             tabs.Add(new TabItem() { Id = 1, Icon = "ic_home.png", SelectedIcon = "ic_logo.png", Name = "Inicio", });
-            tabs.Add(new TabItem() { Id = 2, Icon = "ic_list.png", SelectedIcon = "ic_logo.png", Name = "Lista", });
+            tabs.Add(new TabItem() { Id = 2, Icon = "ic_list.png", SelectedIcon = "ic_logo.png", Name = "GloboList", });
             tabs.Add(new TabItem() { Id = 3, Icon = "ic_search.png", SelectedIcon = "ic_logo.png", Name = "Buscar", });
             tabs.Add(new TabItem() { Id = 4, Icon = "ic_profile.png", SelectedIcon = "ic_logo.png", Name = "Perfil" });
 
@@ -98,6 +98,9 @@ namespace Globo
         {
             Notice data = JsonConvert.DeserializeObject<Notice>(e.Result);
             collectionView.ItemsSource = data.Items;
+            OlhaOqueAglobo.ItemsSource = data.Items;
+            TaEmDuvida.ItemsSource = data.Items.OrderBy(x=>x.Title);
+            terceiraLista.ItemsSource = data.Items;
             //abso.IsVisible = false;
             stack.IsVisible = true;
             collectionView.SelectedItem = data.Items;

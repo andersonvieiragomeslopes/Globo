@@ -10,4 +10,25 @@
     <Color x:Key="GradientColorStart">#121212</Color>
     <Color x:Key="GradientColor">#222222</Color>
     <Color x:Key="GradientColorEnd">#323232</Color>
+    <Color x:Key="PageBackgroundColor">#FAF7F7</Color>
+
+    <Color x:Key="PrimaryColor">#FFFFFF</Color>
+    <Color x:Key="SecondaryColor">#000000</Color>
+
+    <Color x:Key="PrimaryTextColor">#202020</Color>
+    <Color x:Key="SecondaryTextColor">#949494</Color>
+
+    <Color x:Key="ImageOverlayColor">#000000</Color>
+    <Color x:Key="ImageOverlayTextColor">#FFFFFF</Color>
+    <x:Double x:Key="ImageOverlayOpacity">0.3</x:Double>
+
+    <x:String x:Key="MessageIcon">message_icon</x:String>
+    <x:String x:Key="GridIcon">grid_icon</x:String>
+
+    <Style TargetType="{x:Type NavigationPage}">
+        <Setter Property="BarBackgroundColor"
+                Value="#000000" />
+        <Setter Property="BarTextColor"
+                Value="#FFFFFF" />
+    </Style>
 </ResourceDictionary>

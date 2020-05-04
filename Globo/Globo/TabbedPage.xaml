@@ -125,18 +125,438 @@
             </StackLayout>
 
             <StackLayout IsVisible="False" x:Name="GloboList">
-                <Label TextColor="{DynamicResource TextColor}" Text="List"></Label>
                 
-                
-                
+                <Label TextColor="{DynamicResource TextColor}" Text="GloboList"></Label>
+                <StackLayout HeightRequest="200">
+                    <Label
+                    Text="Olha o que a globo preparou para você..." Opacity="0.7"  FontAttributes="Bold"  FontSize="14">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="12, 0" />
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <CollectionView x:Name="OlhaOqueAglobo"
+                                 HeightRequest="100"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                                BackgroundColor="{DynamicResource BackgroundColor}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout>
+                                <x:Arguments>
+                                    <ItemsLayoutOrientation>Horizontal</ItemsLayoutOrientation>
+                                </x:Arguments>
+                            </LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.EmptyView>
+                            <Label Text="No items to display" />
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame CornerRadius="2" Padding="2"
+                                       Margin="2,2,2,2"
+                                       BackgroundColor="{DynamicResource BackgroundColor}"
+                                        HeightRequest="100"
+                                         WidthRequest="100">
+                                    <cachedImage:CachedImage 
+                   ErrorPlaceholder="ic_placeholder_image"
+                LoadingPlaceholder="ic_placeholder_image" LoadingPriority="High"
+                DownsampleToViewSize="True"                                               
+                                        HeightRequest="120"
+                                         WidthRequest="100"                                            
+                                        Margin="5"                
+                                        RetryCount="3"                               
+                                        Aspect="AspectFill"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"                         
+                Source="{Binding Thumbnail}">
+                                    </cachedImage:CachedImage>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout HeightRequest="200">
+                    <Label
+                    Text="Tá em dúvida do que assistir? Olha só.." Opacity="0.7"  FontAttributes="Bold"  FontSize="14">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="12, 0" />
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <CollectionView x:Name="TaEmDuvida"
+                                 HeightRequest="100"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                                BackgroundColor="{DynamicResource BackgroundColor}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout>
+                                <x:Arguments>
+                                    <ItemsLayoutOrientation>Horizontal</ItemsLayoutOrientation>
+                                </x:Arguments>
+                            </LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.EmptyView>
+                            <Label Text="No items to display" />
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame CornerRadius="2" Padding="2"
+                                       Margin="2,2,2,2"
+                                       BackgroundColor="{DynamicResource BackgroundColor}"
+                                        HeightRequest="100"
+                                         WidthRequest="100">
+                                    <cachedImage:CachedImage 
+                   ErrorPlaceholder="ic_placeholder_image"
+                LoadingPlaceholder="ic_placeholder_image" LoadingPriority="High"
+                DownsampleToViewSize="True"                                               
+                                        HeightRequest="120"
+                                         WidthRequest="100"                                            
+                                        Margin="5"                
+                                        RetryCount="3"                               
+                                        Aspect="AspectFill"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"                         
+                Source="{Binding Thumbnail}">
+                                    </cachedImage:CachedImage>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <StackLayout HeightRequest="200">
+                    <Label
+                    Text="Olha o que a globo preparou para você..." Opacity="0.7"  FontAttributes="Bold"  FontSize="14">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <On Platform="Android" Value="12, 0" />
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                    <CollectionView x:Name="terceiraLista"
+                                 HeightRequest="100"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                                BackgroundColor="{DynamicResource BackgroundColor}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout>
+                                <x:Arguments>
+                                    <ItemsLayoutOrientation>Horizontal</ItemsLayoutOrientation>
+                                </x:Arguments>
+                            </LinearItemsLayout>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.EmptyView>
+                            <Label Text="No items to display" />
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame CornerRadius="2" Padding="2"
+                                       Margin="2,2,2,2"
+                                       BackgroundColor="{DynamicResource BackgroundColor}"
+                                        HeightRequest="100"
+                                         WidthRequest="100">
+                                    <cachedImage:CachedImage 
+                   ErrorPlaceholder="ic_placeholder_image"
+                LoadingPlaceholder="ic_placeholder_image" LoadingPriority="High"
+                DownsampleToViewSize="True"                                               
+                                        HeightRequest="120"
+                                         WidthRequest="100"                                            
+                                        Margin="5"                
+                                        RetryCount="3"                               
+                                        Aspect="AspectFill"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"                         
+                Source="{Binding Thumbnail}">
+                                    </cachedImage:CachedImage>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
             </StackLayout>
             <StackLayout IsVisible="False" x:Name="GloboSearch">
                 <Label TextColor="{DynamicResource TextColor}" Text="Search"></Label>
 
             </StackLayout>
             <StackLayout IsVisible="False" x:Name="GloboProfile" Orientation="Vertical">
-                <Label TextColor="{DynamicResource TextColor}" Text="Profile"></Label>
-                <Grid
+              
+                
+                
+                
+                
+                
+                
+                <ScrollView>
+                    <Grid
+            Padding="0"
+            ColumnSpacing="0"
+            RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                Grid.Row="0"
+                Aspect="AspectFill"
+                HorizontalOptions="Fill"
+                Source="time60censurado"
+                VerticalOptions="Fill" />
+                        <BoxView
+                Grid.Row="0"
+                BackgroundColor="{DynamicResource ImageOverlayColor}"
+                Opacity="{DynamicResource ImageOverlayOpacity}" />
+                        <StackLayout
+                Grid.Row="0"
+                Padding="18,25"
+                Spacing="0">
+                            <StackLayout
+                    Padding="0"
+                    Orientation="Horizontal"
+                    Spacing="20">
+
+                                <!--  Circle profile image with indicator  -->
+                                <Grid
+                        Padding="0"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start">
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                    </Grid.GestureRecognizers>
+
+                                    <pv:PancakeView
+                            BorderColor="{DynamicResource PrimaryColor}"
+                            BorderThickness="2"
+                            CornerRadius="51"
+                            HeightRequest="102"
+                            WidthRequest="102">
+                                        <Image Source="ic_profile" />
+                                    </pv:PancakeView>
+
+                                    <BoxView
+                            Margin="10"
+                            BackgroundColor="#30F23D"
+                            CornerRadius="5"
+                            HeightRequest="10"
+                            HorizontalOptions="End"
+                            VerticalOptions="End"
+                            WidthRequest="10" />
+                                </Grid>
+
+                                <!--  Interaction buttons  -->
+                                <!--<ImageButton
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{DynamicResource MessageIcon}"
+                        VerticalOptions="Center" />
+                                <Button
+                        BackgroundColor="{DynamicResource PrimaryColor}"
+                        CornerRadius="25"
+                        FontAttributes="Bold"
+                        FontSize="10"
+                        HeightRequest="36"
+                        HorizontalOptions="End"
+                        Text="FOLLOW"
+                        TextColor="{DynamicResource PrimaryTextColor}"
+                        VerticalOptions="Center" />-->
+                            </StackLayout>
+
+                            <!--  Profile text  -->
+                            <Label
+                    Margin="0,9,0,0"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    Text="Time 60"
+                    TextColor="{DynamicResource ImageOverlayTextColor}" />
+                            <Label
+                    FontSize="Default"
+                    Text="Desafio Globo"
+                    TextColor="{DynamicResource ImageOverlayTextColor}" />
+                            <Label
+                    FontSize="Medium"
+                    Text="Anderson, Camila, Ismael, Oliveira e Roberta"
+                    TextColor="{DynamicResource ImageOverlayTextColor}" />
+                            <StackLayout
+                    Margin="0,20"
+                    Orientation="Horizontal"
+                    Spacing="4">
+                                <Image Source="location_icon" VerticalOptions="Center" />
+                                <Label
+                        FontSize="Caption"
+                        Text="Brasil"
+                        TextColor="{DynamicResource ImageOverlayTextColor}"
+                        VerticalOptions="Center" />
+                                <BoxView
+                        Margin="16,4"
+                        HeightRequest="0"
+                        HorizontalOptions="End"
+                        VerticalOptions="Fill"
+                        WidthRequest="1"
+                        Color="#707070" />
+                                <Image Source="mobile_icon" VerticalOptions="Center" />
+                                <Label
+                        FontSize="Caption"
+                        Text=":)"
+                        TextColor="{DynamicResource ImageOverlayTextColor}"
+                        VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!--  Activity feed  -->
+                        <StackLayout Grid.Row="1" Padding="16,54,16,0">
+                            <StackLayout Padding="3,0" Orientation="Horizontal">
+                                <Label
+                        FontAttributes="Bold"
+                        FontSize="Caption"
+                        Text="Activity"
+                        TextColor="{DynamicResource SecondaryTextColor}" />
+                                <ImageButton
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="EndAndExpand"
+                        Source="{DynamicResource GridIcon}"
+                        VerticalOptions="Center" />
+                                <ImageButton
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="End"
+                        Source="list_icon"
+                        VerticalOptions="Center" />
+                            </StackLayout>
+                            <FlexLayout
+                    AlignContent="Start"
+                    AlignItems="Center"
+                    Direction="Row"
+                    JustifyContent="Center"
+                    Wrap="Wrap">
+                                <BindableLayout.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>photo_0</x:String>
+                                        <x:String>photo_1</x:String>
+                                        <x:String>photo_2</x:String>
+                                        <x:String>photo_3</x:String>
+                                        <x:String>photo_4</x:String>
+                                        <x:String>photo_5</x:String>
+                                        <x:String>photo_0</x:String>
+                                        <x:String>photo_1</x:String>
+                                        <x:String>photo_2</x:String>
+                                        <x:String>photo_3</x:String>
+                                        <x:String>photo_4</x:String>
+                                        <x:String>photo_5</x:String>
+                                        <x:String>photo_0</x:String>
+                                        <x:String>photo_1</x:String>
+                                        <x:String>photo_2</x:String>
+                                        <x:String>photo_3</x:String>
+                                        <x:String>photo_4</x:String>
+                                        <x:String>photo_5</x:String>
+                                    </x:Array>
+                                </BindableLayout.ItemsSource>
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <Image Margin="3" Source="{Binding .}" />
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                        </StackLayout>
+
+
+                        <!--  Stats  -->
+                        <pv:PancakeView
+                Grid.Row="1"
+                Margin="20,-30,20,0"
+                BackgroundColor="{DynamicResource PrimaryColor}"
+                CornerRadius="20"
+                HasShadow="True"
+                HeightRequest="72"
+                VerticalOptions="Start">
+                            <Grid
+                    Padding="0,8"
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout
+                        Grid.Column="0"
+                        HorizontalOptions="Center"
+                        Spacing="0"
+                        VerticalOptions="Center">
+                                    <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            Text="500"
+                            TextColor="{DynamicResource PrimaryTextColor}" />
+                                    <Label
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Plim Plim"
+                            TextColor="{DynamicResource SecondaryTextColor}" />
+                                </StackLayout>
+
+                                <BoxView
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,12"
+                        HeightRequest="0"
+                        HorizontalOptions="End"
+                        Opacity="0.7"
+                        VerticalOptions="Fill"
+                        WidthRequest="1"
+                        Color="{DynamicResource SecondaryTextColor}" />
+
+                                <StackLayout
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        Spacing="0"
+                        VerticalOptions="Center">
+                                    <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            Text="12"
+                            TextColor="{DynamicResource PrimaryTextColor}" />
+                                    <Label
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Visualizados"
+                            TextColor="{DynamicResource SecondaryTextColor}" />
+                                </StackLayout>
+
+                                <BoxView
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,12"
+                        HeightRequest="0"
+                        HorizontalOptions="Start"
+                        Opacity="0.7"
+                        VerticalOptions="Fill"
+                        WidthRequest="1"
+                        Color="{DynamicResource SecondaryTextColor}" />
+
+                                <StackLayout
+                        Grid.Column="2"
+                        HorizontalOptions="Center"
+                        Spacing="0"
+                        VerticalOptions="Center">
+                                    <Label
+                            FontSize="Medium"
+                            HorizontalOptions="Center"
+                            Text="117"
+                            TextColor="{DynamicResource PrimaryTextColor}" />
+                                    <Label
+                            FontSize="Caption"
+                            HorizontalOptions="Center"
+                            Text="Ranking"
+                            TextColor="{DynamicResource SecondaryTextColor}" />
+                                </StackLayout>
+
+                            </Grid>
+                        </pv:PancakeView>
+                    </Grid>
+                </ScrollView>
+<Grid
                         Padding="10"
                         BackgroundColor="{DynamicResource BackgroundColor}"
                         ColumnSpacing="15">
