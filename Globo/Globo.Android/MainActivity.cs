@@ -41,7 +41,7 @@ namespace Globo.Droid
             {
                 //DependencyService.Get<IAndroidOrientation>().RotateToPortrait();
 
-                PopupNavigation.Instance.PopAsync();
+                //PopupNavigation.Instance.PopAsync();
             }
             else
             {

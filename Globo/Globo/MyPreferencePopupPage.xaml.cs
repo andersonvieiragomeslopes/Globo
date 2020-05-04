@@ -1,4 +1,5 @@
 ﻿using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,13 @@ namespace Globo
         public MyPreferencePopupPage()
         {
             InitializeComponent();
+        }
+
+
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PopAsync(true);
+
         }
     }
 }

@@ -13,8 +13,8 @@
             EasingIn="SinOut"
             EasingOut="SinIn"
             HasBackgroundAnimation="True"
-            PositionIn="Top"
-            PositionOut="Top"
+            PositionIn="Center"
+            PositionOut="Center"
             ScaleIn="1.2"
             ScaleOut="0.8" />
     </popup:PopupPage.Animation>
@@ -22,112 +22,36 @@
         <pancake:PancakeView
             Padding="0"
             BackgroundGradientAngle="90"
-            BackgroundGradientEndColor="#211F4E"
-            BackgroundGradientStartColor="#7C45B3"
-            CornerRadius="0,0,25,25"
+            BackgroundGradientEndColor="Blue"
+            BackgroundGradientStartColor="Blue"
+            CornerRadius="25,25,25,25"
             HasShadow="True"
-            HeightRequest="105"
-            VerticalOptions="Start">
-            <Grid HorizontalOptions="FillAndExpand" RowSpacing="{OnPlatform Android='0', iOS='5'}">
+            HeightRequest="305"
+            VerticalOptions="Center">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".5*" />
-                    <ColumnDefinition Width=".3*" />
-                    <ColumnDefinition Width=".2*" />
-                </Grid.ColumnDefinitions>
-                <Label
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    Margin="40,20,0,0"
-                    FontSize="Micro"
-                    HorizontalOptions="FillAndExpand"
-                    Text="Linguagem"
-                    TextColor="White"
-                    VerticalOptions="Center" />
-                <Grid Grid.Row="0" Grid.Column="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <ImageButton
-                        Grid.Column="0"
-                        Margin="0,20,0,0"
-                        Aspect="AspectFill"
-                        BackgroundColor="Transparent"
-                        CommandParameter="pt"
-                        CornerRadius="6"
-                        HeightRequest="22"
-                        HorizontalOptions="Start"
-                        Source="ic_placeholder_image"
-                        VerticalOptions="Center"
-                        WidthRequest="40" />
-                    <BoxView
-                        Grid.Column="0"
-                        Margin="0,18,-5,0"
-                        BackgroundColor="#F4195D"
-                        CornerRadius="5"
-                        HeightRequest="10"
-                        HorizontalOptions="End"
-                        VerticalOptions="Start"
-                        WidthRequest="10" />
-                    <ImageButton
-                        Grid.Column="1"
-                        Margin="0,20,0,0"
-                        Aspect="AspectFill"
-                        BackgroundColor="Transparent"
-                        CommandParameter="en"
-                        CornerRadius="6"
-                        HeightRequest="22"
-                        HorizontalOptions="Start"
-                        Source="flag_us"
-                        VerticalOptions="Center"
-                        WidthRequest="40" />
-                    <BoxView
-                        Grid.Column="1"
-                        Margin="0,18,-5,0"
-                        BackgroundColor="#F4195D"
-                        CornerRadius="5"
-                        HeightRequest="10"
-                        HorizontalOptions="End"
-                        VerticalOptions="Start"
-                        WidthRequest="10" />
-                </Grid>
-                <ImageButton
+
+
+
+                <Image
                     Grid.Row="0"
                     Grid.Column="2"
                     Margin="0,15,10,0"
-                    Padding="10" Source="favorite"
+                     Source="favorite"
                     BackgroundColor="Transparent"
-                    Command="{Binding ClosePopUpCommand}"
+                    
                     HeightRequest="36"
                     HorizontalOptions="EndAndExpand"
                     VerticalOptions="Center"
                     WidthRequest="45">
-                </ImageButton>
-                <!--<Label
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    Margin="40,0,0,0"
-                    FontFamily="{DynamicResource FontAvenir}"
-                    FontSize="Micro"
-                    HorizontalOptions="FillAndExpand"
-                    Text="{Binding ThemeSelection}"
-                    TextColor="White"
-                    VerticalOptions="Center" />
-                <Switch
-                    x:Name="switchChangeTheme"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="{OnPlatform Android='-5,0,13,0',
-                                        iOS='0'}"
-                    HeightRequest="28"
-                    HorizontalOptions="Start"
-                    IsToggled="{Binding AppDarkTheme}"
-                    OnColor="#EEE"
-                    ThumbColor="#F4195D" />-->
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+               
             </Grid>
         </pancake:PancakeView>
     </ContentPage.Content>
