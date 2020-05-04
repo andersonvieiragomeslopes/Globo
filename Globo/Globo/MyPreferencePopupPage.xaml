@@ -22,8 +22,8 @@
         <pancake:PancakeView
             Padding="0"
             BackgroundGradientAngle="90"
-            BackgroundGradientEndColor="Blue"
-            BackgroundGradientStartColor="Blue"
+            BackgroundGradientEndColor="White"
+            BackgroundGradientStartColor="White"
             CornerRadius="25,25,25,25"
             HasShadow="True"
             HeightRequest="305"
@@ -40,7 +40,7 @@
                     Grid.Row="0"
                     Grid.Column="2"
                     Margin="0,15,10,0"
-                     Source="favorite"
+                     Source="ic_close"
                     BackgroundColor="Transparent"
                     
                     HeightRequest="36"
