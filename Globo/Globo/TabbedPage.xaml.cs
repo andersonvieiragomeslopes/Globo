@@ -72,6 +72,11 @@ namespace Globo
         {
             InitializeComponent();
             this.BindingContext = this;
+            if (Settings.AppPrefrences.AppTheme.Equals(Xamarin.Essentials.AppTheme.Light))
+                IconImg.IconImageSource = "ic_light.png";
+            else
+                IconImg.IconImageSource = "ic_dark.png";
+
             // GetThemeSetting();
             List<TabItem> tabs = new List<TabItem>();
             tabs.Add(new TabItem() { Id = 1, Icon = "ic_home.png", SelectedIcon = "ic_logo.png", Name = "Inicio", });
@@ -84,6 +89,7 @@ namespace Globo
             stack.IsVisible = false;
             SharedTransitionNavigationPage.SetBackgroundAnimation(this, BackgroundAnimation.Fade);
             SharedTransitionNavigationPage.SetTransitionDuration(this, 500);
+         
         }
 
 
@@ -136,7 +142,7 @@ namespace Globo
                 GloboList.IsVisible = true;
                 GloboProfile.IsVisible = false;
                 GloboSearch.IsVisible = false;
-                await Navigation.PushPopupAsync(new MyPreferencePopupPage());
+               // await Navigation.PushPopupAsync(new MyPreferencePopupPage());
 
 
             }
@@ -196,6 +202,47 @@ namespace Globo
         {
             var args = (TappedEventArgs)e;
             var theme = args.Parameter.ToString();
+            var appTheme = Enums.ConvertToEnum<Settings.Theme>(theme);
+
+            switch (appTheme)
+            {
+                case Settings.Theme.LightTheme:
+                    IsLightTheme = true;
+                    ThemeHelper.ChangeToLightTheme();
+                    break;
+                case Settings.Theme.DarkTheme:
+                    IsDarkTheme = true;
+                    ThemeHelper.ChangeToDarkTheme();
+                    break;
+                case Settings.Theme.SystemPreferred:
+                    IsSystemPreferredTheme = true;
+                    ThemeHelper.ChangeToSystemPreferredTheme();
+                    break;
+                default:
+                    IsSystemPreferredTheme = true;
+                    ThemeHelper.ChangeToSystemPreferredTheme();
+                    break;
+            }
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+            if (IconImg.ClassId == "darktheme")
+            {
+                IconImg.ClassId = "list";
+                ChangeTheme("LightTheme");
+
+                IconImg.IconImageSource = "ic_dark.png";
+            }
+            else
+            {
+                IconImg.ClassId = "darktheme";
+                ChangeTheme("DarkTheme");
+                IconImg.IconImageSource = "ic_light.png";
+            }
+        }
+        public void ChangeTheme(string theme)
+        {
             var appTheme = Enums.ConvertToEnum<Settings.Theme>(theme);
 
             switch (appTheme)

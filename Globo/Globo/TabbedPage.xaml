@@ -6,17 +6,35 @@
              mc:Ignorable="d" 
              xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" xmlns:cachedImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             x:Class="Globo.TabbedPage" BackgroundColor="{DynamicResource BackgroundColor}" >
+             x:Class="Globo.TabbedPage" BackgroundColor="{DynamicResource BackgroundColor}" NavigationPage.IconColor="Black">
     <NavigationPage.TitleView >
         <StackLayout BackgroundColor="Transparent" VerticalOptions="FillAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand"  >
-            <Grid>
+            <Grid Padding="100,0,0,0">
                 <!--<Image Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" Source="https://upload.wikimedia.org/wikipedia/pt/2/22/Logotipo_da_Rede_Globo.png" 
                    HeightRequest="55" Margin="0,-14,0,0"></Image>-->
-                <Label  Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"  Text="globo.com"
+                <Label  Grid.Row="0" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"  Text="globo.com"
                    HeightRequest="55" TextColor="{DynamicResource TextColor}" FontSize="20" Margin="0,14,0,0"></Label>
+                <!--<Image Grid.Row="0" 
+                       Grid.Column="2" 
+                       Margin="100,-18,0,0" 
+                       HeightRequest="50" 
+                       ClassId="darktheme"  
+                       x:Name="IconImg" 
+Source="ic_light.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>-->
             </Grid>
         </StackLayout>
     </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem ClassId="darktheme" IconImageSource="ic_light.png" 
+                       x:Name="IconImg"  Clicked="TapGestureRecognizer_Tapped_1">
+            
+           
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <AbsoluteLayout  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <!--<AbsoluteLayout   VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">-->
@@ -275,10 +293,12 @@
                     </CollectionView>
                 </StackLayout>
             </StackLayout>
+            
             <StackLayout IsVisible="False" x:Name="GloboSearch">
                 <Label TextColor="{DynamicResource TextColor}" Text="Search"></Label>
 
             </StackLayout>
+            
             <StackLayout IsVisible="False" x:Name="GloboProfile" Orientation="Vertical">
               
                 
@@ -288,6 +308,7 @@
                 
                 
                 <ScrollView>
+                    <StackLayout>
                     <Grid
             Padding="0"
             ColumnSpacing="0"
@@ -404,13 +425,12 @@
                             </StackLayout>
                         </StackLayout>
 
-                        <!--  Activity feed  -->
                         <StackLayout Grid.Row="1" Padding="16,54,16,0">
                             <StackLayout Padding="3,0" Orientation="Horizontal">
                                 <Label
                         FontAttributes="Bold"
                         FontSize="Caption"
-                        Text="Activity"
+                        Text="Atividade"
                         TextColor="{DynamicResource SecondaryTextColor}" />
                                 <ImageButton
                         BackgroundColor="Transparent"
@@ -554,87 +574,10 @@
 
                             </Grid>
                         </pv:PancakeView>
-                    </Grid>
+                        </Grid>
+                    </StackLayout>
                 </ScrollView>
-<Grid
-                        Padding="10"
-                        BackgroundColor="{DynamicResource BackgroundColor}"
-                        ColumnSpacing="15">
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="DarkTheme"/>
-                    </Grid.GestureRecognizers>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-
-                    <Label
-                            Grid.Column="0"
-                            FontAttributes="Bold"
-                            FontSize="25"
-                            Text="Claro"
-                            TextColor="{DynamicResource TextColor}"
-                            VerticalOptions="Center" />
-
-                    <Label
-                            Grid.Column="1"
-                            FontSize="16"
-                            Text="Dark"
-                            TextColor="{DynamicResource TextColor}"
-                            VerticalOptions="Center" />
-
-                    <Label
-                            Grid.Column="2"
-                            FontAttributes="Bold"
-                            FontSize="18"
-                            TextColor="{DynamicResource TextColor}"
-                            IsVisible="{Binding IsDarkTheme}"
-                            Text="Escuro"
-                            VerticalOptions="Center" />
-
-                </Grid>
-
-                    <Grid
-                        Padding="10"
-                        BackgroundColor="{DynamicResource BackgroundColor}"
-                        ColumnSpacing="15">
-                        <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" CommandParameter="LightTheme" />
-                        </Grid.GestureRecognizers>
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label
-                            Grid.Column="0"
-                            FontAttributes="Bold"
-                            FontSize="25"
-                            Text="Claro"
-                            TextColor="{DynamicResource TextColor}"
-                            VerticalOptions="Center" />
-
-                        <Label
-                            Grid.Column="1"
-                            FontSize="16"
-                            Text="Light"
-                            TextColor="{DynamicResource TextColor}"
-                            VerticalOptions="Center" />
-
-                        <Label
-                            Grid.Column="2"
-                            FontAttributes="Bold"
-                            FontSize="18"
-                            TextColor="{DynamicResource TextColor}"
-                            IsVisible="{Binding IsLightTheme}"
-                            Text="Claro"
-                            VerticalOptions="Center" />
-
-                    </Grid>
                 </StackLayout>
             <tab:BottomTabBar AbsoluteLayout.LayoutBounds="0, 0.99, 1, 1"  AbsoluteLayout.LayoutFlags="All"
                 x:Name="BottomTabBarContainer" Tapped="BottomTabBarContainer_Tapped"
